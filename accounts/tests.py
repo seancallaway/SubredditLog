@@ -3,6 +3,7 @@ from django.test import TestCase
 
 PASSWORD = 'p@ssw0rd123'
 
+
 def create_user(username='test_user', password=PASSWORD):
     return get_user_model().objects.create_user(
         username=username,
