@@ -11,6 +11,8 @@ jobs:
   test:
     runs-on: ubuntu-20.04
     container: python:3.9-slim
+    env:
+      SECRET_KEY: t3st1ng-SEcr3+-k3y
     steps:
       - uses: actions/checkout@v2
       - name: Install Dependencies
