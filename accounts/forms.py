@@ -1,5 +1,5 @@
-from django.contrib.auth.forms import (UserCreationForm as DefaultUserCreationForm,
-                                       UserChangeForm as DefaultUserChangeForm)
+from django.contrib.auth.forms import UserChangeForm as DefaultUserChangeForm
+from django.contrib.auth.forms import UserCreationForm as DefaultUserCreationForm
 
 from accounts.models import User
 
