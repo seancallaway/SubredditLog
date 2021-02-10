@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.urls import reverse
 
 from entries.forms import EntryForm
 from entries.models import Entry, Rule
@@ -20,3 +21,10 @@ class EntryFormTest(TestCase):
             'Ban Length is required for temporary bans.',
             form.errors['__all__']
         )
+
+
+class ProtectedViewsTest(TestCase):
+
+    def test_cannot_access_add_entry_view_as_anonymous(self):
+        response = self.client.get(reverse('entry-create'), follow=True)
+        self.assertRedirects(response, f"{reverse('account_login')}?next={reverse('entry-create')}")
