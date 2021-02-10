@@ -28,7 +28,7 @@
             <td>{{ entry.rule }}</td>
             <td>{{ entry.action_string }}</td>
             {% if user.is_authenticated %}
-              <td>{{ entry.mod.username }}</td>
+              <td>{{ entry.moderator.username }}</td>
               <td>{{ entry.notes }}</td>
             {% endif %}
           </tr>
