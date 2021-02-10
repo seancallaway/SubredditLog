@@ -1,6 +1,6 @@
 from django.views.generic import ListView
 
-from entries.models import Entry
+from entries.models import Entry, Rule
 
 
 class LogView(ListView):
@@ -8,3 +8,10 @@ class LogView(ListView):
     model = Entry
     context_object_name = 'entries'
     queryset = Entry.objects.all()
+
+
+class RulesView(ListView):
+    template_name = 'entries/rules.html'
+    model = Rule
+    context_object_name = 'rules'
+    queryset = Rule.objects.all()
