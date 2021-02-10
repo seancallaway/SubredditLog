@@ -30,6 +30,7 @@ INSTALLED_APPS = [
 
     'accounts',
     'entries',
+    'pagination',
 ]
 
 SITE_ID = 1
