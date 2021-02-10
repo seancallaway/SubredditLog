@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Q
 from django.urls import reverse
 from django.views.generic import CreateView, ListView
 
@@ -11,6 +12,7 @@ class LogView(ListView):
     model = Entry
     context_object_name = 'entries'
     queryset = Entry.objects.all()
+    paginate_by = 25
 
 
 class RulesView(ListView):
@@ -18,6 +20,21 @@ class RulesView(ListView):
     model = Rule
     context_object_name = 'rules'
     queryset = Rule.objects.all()
+
+
+class Search(ListView):
+    template_name = 'entries/search.html'
+    model = Entry
+    context_object_name = 'entries'
+    paginate_by = 25
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if not query:
+            return Entry.objects.none()
+        return Entry.objects.filter(
+            Q(user__icontains=query) | Q(notes__icontains=query)
+        )
 
 
 class AddEntryView(LoginRequiredMixin, CreateView):

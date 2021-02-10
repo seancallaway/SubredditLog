@@ -7,7 +7,7 @@
         <a class="btn btn-info" href="{% url 'entry-create' %}">Add Entry</a>
       </div>
     {% endif %}
-    {% include 'entries/_entry_table.html' %}
+    {% include 'entries/_entry_table.html' with table_type='search' %}
 
     {% if is_paginated %}
       {% load pagination_tags %}
