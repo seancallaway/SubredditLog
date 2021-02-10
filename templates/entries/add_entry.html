@@ -5,8 +5,7 @@
   <div class="container my-3">
     <form method="post" novalidate>
       {% csrf_token %}
-      {{ form|crispy }}
-      <button type="submit" class="btn btn-success">Save Entry</button>
+      {% crispy form %}
     </form>
   </div>
 {% endblock %}
