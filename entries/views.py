@@ -1,4 +1,5 @@
-from django.views.generic import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import CreateView, ListView
 
 from entries.models import Entry, Rule
 
@@ -15,3 +16,19 @@ class RulesView(ListView):
     model = Rule
     context_object_name = 'rules'
     queryset = Rule.objects.all()
+
+
+class AddEntryView(LoginRequiredMixin, CreateView):
+    template_name = 'entries/add_entry.html'
+    model = Entry
+    fields = [
+        'user',
+        'rule',
+        'action',
+        'ban_length',
+        'notes',
+    ]
+
+    def form_valid(self, form):
+        form.instance.mod = self.request.user
+        return super().form_valid(form)

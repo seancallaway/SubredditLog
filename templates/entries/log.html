@@ -1,38 +1,45 @@
 {% extends "_main.html" %}
 
 {% block content %}
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Date</th>
-        <th scope="col">User</th>
-        <th scope="col">Rule</th>
-        <th scope="col">Action</th>
-        {% if user.is_authenticated %}
-          <th scope="col">Mod</th>
-          <th scope="col">Notes</th>
-        {% endif %}
-      </tr>
-    </thead>
-    <tbody>
-      {% for entry in entries %}
+  <div class="container-fluid">
+    {% if user.is_authenticated %}
+      <div class="row mt-2 px-2 justify-content-end">
+        <a class="btn btn-info" href="{% url 'entry-create' %}">Add Entry</a>
+      </div>
+    {% endif %}
+    <table class="table table-hover mt-2">
+      <thead>
         <tr>
-          <td>{{ entry.date|date:"Y-m-d" }}</td>
-          <td><a target="_blank" href="https://www.reddit.com/u/{{ entry.user }}">/u/{{ entry.user }}</a></td>
-          <td>{{ entry.rule }}</td>
-          <td>{{ entry.action_string }}</td>
+          <th scope="col">Date</th>
+          <th scope="col">User</th>
+          <th scope="col">Rule</th>
+          <th scope="col">Action</th>
           {% if user.is_authenticated %}
-            <td>{{ entry.mod.username }}</td>
-            <td>{{ entry.notes }}</td>
+            <th scope="col">Mod</th>
+            <th scope="col">Notes</th>
           {% endif %}
         </tr>
-      {% empty %}
-        <tr>
-          <td colspan="{% if user.is_authenticated %}6{% else %}4{% endif %}">
-            <b>The mod log is currently empty.</b> <em>Strange...</em> 🤔
-          </td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        {% for entry in entries %}
+          <tr>
+            <td>{{ entry.date|date:"Y-m-d" }}</td>
+            <td><a target="_blank" href="https://www.reddit.com/u/{{ entry.user }}">/u/{{ entry.user }}</a></td>
+            <td>{{ entry.rule }}</td>
+            <td>{{ entry.action_string }}</td>
+            {% if user.is_authenticated %}
+              <td>{{ entry.mod.username }}</td>
+              <td>{{ entry.notes }}</td>
+            {% endif %}
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="{% if user.is_authenticated %}6{% else %}4{% endif %}">
+              <b>The mod log is currently empty.</b> <em>Strange...</em> 🤔
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 {% endblock %}
