@@ -106,6 +106,9 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+LOGIN_REDIRECT_URL = 'log-view'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'log-view'
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
