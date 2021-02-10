@@ -25,6 +25,7 @@ INSTALLED_APPS = [
 
     'allauth',
     'allauth.account',
+    'crispy_forms',
     'ordered_model',
 
     'accounts',
@@ -62,6 +63,8 @@ TEMPLATES = [
         },
     },
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 WSGI_APPLICATION = 'subreddit_log.wsgi.application'
 
