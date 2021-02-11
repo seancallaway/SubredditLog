@@ -25,6 +25,8 @@ INSTALLED_APPS = [
 
     'allauth',
     'allauth.account',
+    'constance',
+    'constance.backends.database',
     'crispy_forms',
     'ordered_model',
 
@@ -56,6 +58,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'constance.context_processors.config',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -131,3 +134,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+CONSTANCE_CONFIG = {
+    'subreddit': ('', 'The name of your subreddit, minus the /r/', str),
+    'public modlog': (True, 'Should your modlog be available to non-moderators?', bool),
+}
