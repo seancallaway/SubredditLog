@@ -5,7 +5,8 @@ A tool that allows subreddit moderators to add mod log entries, including privat
 
 ## Installation
 
-_Coming soon._
+SubredditLog is installed as a docker-compose stack. Please see [the documentation](docs/installation/index.md) for 
+more details.
 
 ## Usage example
 
