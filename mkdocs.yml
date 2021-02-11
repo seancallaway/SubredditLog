@@ -1,0 +1,13 @@
+site_name: SubredditLog Documentation
+site_url: https://subredditlog.readthedocs.io/
+repo_url: https://github.com/seancallaway/SubredditLog
+python:
+  install:
+    - requirements: docs/requirements.txt
+theme:
+  name: readthedocs
+  navigation_depth: 3
+nav:
+  - Introduction: 'index.md'
+  - Installation:
+      - Installing SubredditLog: 'installation/index.md'
