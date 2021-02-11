@@ -137,6 +137,15 @@ STATIC_URL = '/static/'
 
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 CONSTANCE_CONFIG = {
-    'subreddit': ('', 'The name of your subreddit, minus the /r/', str),
-    'public_modlog': (True, 'Should your modlog be available to non-moderators?', bool),
+    'SUBREDDIT': ('', 'The name of your subreddit, minus the /r/', str),
+    'PUBLIC_MODLOG': (True, 'Should your modlog be available to non-moderators?', bool),
+}
+CONSTANCE_CONFIG_FIELDSETS = {
+    'General Options': {
+        'fields': (
+            'SUBREDDIT',
+            'PUBLIC_MODLOG',
+        ),
+        'collapse': False,
+    },
 }

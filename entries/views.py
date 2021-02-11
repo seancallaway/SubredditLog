@@ -16,7 +16,7 @@ class LogView(UserPassesTestMixin, ListView):
     paginate_by = 25
 
     def test_func(self):
-        if config.public_modlog:
+        if config.PUBLIC_MODLOG:
             return True
         elif self.request.user.is_authenticated:
             return True

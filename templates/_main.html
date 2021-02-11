@@ -3,8 +3,8 @@
 {% block body %}
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="{% url 'log-view' %}">
-      {% if config.subreddit %}
-        /r/{{ config.subreddit }} Log
+      {% if config.SUBREDDIT %}
+        /r/{{ config.SUBREDDIT }} Log
       {% else %}
         SubredditLog
       {% endif %}
@@ -26,9 +26,9 @@
             Rules {% if request.resolver_match.url_name == 'rules-list' %} <span class="sr-only">(current)</span>{% endif %}
           </a>
         </li>
-        {% if config.subreddit %}
+        {% if config.SUBREDDIT %}
           <li class="nav-item">
-            <a class="nav-link" href="https://www.reddit.com/r/{{ config.subreddit }}" target="_blank">Visit the Subreddit</a>
+            <a class="nav-link" href="https://www.reddit.com/r/{{ config.SUBREDDIT }}" target="_blank">Visit the Subreddit</a>
           </li>
         {% endif %}
       </ul>
