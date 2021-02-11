@@ -11,3 +11,5 @@ nav:
   - Introduction: 'index.md'
   - Installation:
       - Installing SubredditLog: 'installation/index.md'
+      - 1. Docker Compose Stack: 'installation/1-compose.md'
+      - 2. HTTP Server: 'installation/2-http-.md'
