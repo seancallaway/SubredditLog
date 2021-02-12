@@ -57,7 +57,8 @@ functions. (Note, however, that it is _never_ directly used in the encryption of
 to this installation and is recommended to be at least 50 characters long. It should not be shared outside the local 
 system.
 
-The following online tool can be used to generate a good secret key: https://miniwebtool.com/django-secret-key-generator/
+The following online tool can be used to generate a good secret key: 
+[https://miniwebtool.com/django-secret-key-generator/](https://miniwebtool.com/django-secret-key-generator/)
 
 !!! warning
     In the case of a highly available installation with multiple web servers, `SECRET_KEY` must be identical among all 
@@ -67,7 +68,7 @@ servers in order to maintain a persistent user session state.
 
 Input a random, secure password to be used for the local database connection.
 
-The following online tool can be used to generate a working password: https://nupass.pw
+The following online tool can be used to generate a working password: [https://nupass.pw](https://nupass.pw)
 
 When you have finished modifying the configuration, remember to save the file.
 
