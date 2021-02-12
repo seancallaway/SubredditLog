@@ -27,7 +27,7 @@ services:
       - POSTGRES_DB=subreddit_log
       - POSTGRES_PASSWORD=$DB_PASSWORD
   nginx:
-    build: ./nginx
+    image: seancallaway/subredditlog:0.1-nginx
     ports:
       - 7654:80
     depends_on:
