@@ -3,6 +3,8 @@ on:
   push:
     tags:
       - v*
+    branches:
+      - 35/docker_build
 
 env:
   REGISTRY: ghcr.io
