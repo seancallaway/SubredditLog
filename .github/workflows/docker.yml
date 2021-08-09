@@ -33,18 +33,15 @@ jobs:
         with:
           context: .
           file: Dockerfile.prod
-          repository: ${{ env.IMAGE_NAME }}
-          #tag: ${{ github.event.release.tag_name }}
-          tag: latest
+          #tag: ${{ env.IMAGE_NAME }}-nginx:${{ github.event.release.tag_name }}
+          tags: ${{ env.IMAGE_NAME }}-nginx:latest
           push: true
 
       - name: Build and Push Nginx Image
         id: nginx_build
         uses: docker/build-push-action@v2
         with:
-          context: .
-          file: Dockerfile.prod
-          repository: ${{ env.IMAGE_NAME }}-nginx
-          #tag: ${{ github.event.release.tag_name }}
-          tag: latest
+          context: nginx/
+          #tags: ${{ env.IMAGE_NAME }}-nginx:${{ github.event.release.tag_name }}
+          tags: ${{ env.IMAGE_NAME }}-nginx:latest
           push: true
