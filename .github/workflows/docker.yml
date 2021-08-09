@@ -26,7 +26,7 @@ jobs:
           file: Dockerfile.prod
           registry: ${{ env.REGISTRY }}
           username: ${{ secrets.GHCR_USERNAME }}
-          password: ${{ secrets.GHCR.ACCESS_TOKEN }}
+          password: ${{ secrets.GHCR_ACCESS_TOKEN }}
           repository: ${{ env.IMAGE_NAME }}
           tag: ${{ github.event.release.tag_name }}
           push: true
@@ -39,7 +39,7 @@ jobs:
           file: Dockerfile.prod
           registry: ${{ env.REGISTRY }}
           username: ${{ secrets.GHCR_USERNAME }}
-          password: ${{ secrets.GHCR.ACCESS_TOKEN }}
+          password: ${{ secrets.GHCR_ACCESS_TOKEN }}
           repository: ${{ env.IMAGE_NAME }}-nginx
           tag: ${{ github.event.release.tag_name }}
           push: true
