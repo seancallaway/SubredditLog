@@ -1,3 +1,7 @@
+# NOTE: This project has moved to GitLab.
+
+All current development efforts take place here: https://gitlab.com/scallaway/SubredditLog
+
 # SubredditLog
 > A Moderation Log for Subreddit Moderators with Both Public and Private Interfaces
 
