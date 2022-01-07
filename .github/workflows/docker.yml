@@ -29,13 +29,20 @@ jobs:
           username: ${{ secrets.GHCR_USERNAME }}
           password: ${{ secrets.GHCR_ACCESS_TOKEN }}
 
+      - name: Sanitize Repo Slug
+        uses: actions/github-script@v4
+        id: repo_slug
+        with:
+          result-encoding: string
+          script: return 'ghcr.io/${{ github.repository }}'.toLowerCase()
+
       - name: Build and Push Main Image
         id: main_build
         uses: docker/build-push-action@v2
         with:
           context: .
           file: Dockerfile.prod
-          tags: ${{ env.REGISTRY }}/seancallaway/subredditlog:${{ github.event.release.tag_name }}
+          tags: ${{ steps.repo_slug.outputs.result }}:${{ github.event.release.tag_name }}
           push: true
 
       - name: Build and Push Nginx Image
@@ -43,5 +50,5 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: nginx/
-          tags: ${{ env.REGISTRY }}/seancallaway/subredditlog-nginx:${{ github.event.release.tag_name }}
+          tags: ${{ steps.repo_slug.outputs.result }}-nginx:${{ github.event.release.tag_name }}
           push: true
