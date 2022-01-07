@@ -1,10 +1,8 @@
 name: Build and Push Docker Images
 on:
   push:
-    branches:
-      - fix/docker_build
-#    tags:
-#      - v*
+    tags:
+      - v*
 
 env:
   REGISTRY: ghcr.io
@@ -34,7 +32,7 @@ jobs:
         id: repo_slug
         with:
           result-encoding: string
-          script: return 'ghcr.io/${{ github.repository }}'.toLowerCase()
+          script: return '${{ env.REGISTRY }}/${{ github.repository }}'.toLowerCase()
 
       - name: Build and Push Main Image
         id: main_build
