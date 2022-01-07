@@ -1,8 +1,10 @@
 name: Build and Push Docker Images
 on:
   push:
-    tags:
-      - v*
+    branches:
+      - fix/docker_build
+#    tags:
+#      - v*
 
 env:
   REGISTRY: ghcr.io
